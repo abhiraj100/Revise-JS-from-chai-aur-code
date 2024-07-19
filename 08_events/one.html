@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+           <!-- <li><img width="200px" id="owl" onclick="alert('owl')" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li> -->
+           <!-- don't inject inside HTML , because it is not feasible approach -->
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+
+<script>
+    
+    // attachEvent() => it is useful in the early times when there was a lot of competition for Internet Explorer and it was very difficult to run on your applications on Internet Explorer.
+    // jQuery - .on  (like that -> addEventListener) =>   // jQuery is the framework
+
+
+    // document.getElementById('owl').onclick = function() {
+    //     alert("owl clicked")
+    // }
+
+    // addEventListener helps in propagation ability, also gives more features
+
+    // document.getElementById('owl').addEventListener('click', function() {}, false)  // default third parameter is false and it is default
+    // document.getElementById('owl').addEventListener('click', function() {}) 
+    // document.getElementById('owl').addEventListener('click', function() {
+    //     alert("Owl clicked again")
+    // } );
+
+    // Event Objects
+
+    // type, timeStamp, defaultPrevented, view
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, offsetX, offsetY, screenX, screenY
+    // tiltX, tiltY  -> Position related
+    // altKey, ctrlKey, shiftKey, keyCode
+
+    // document.getElementById('owl').addEventListener('click', function(e) {
+    //     console.log(e);
+    // }, false );
+
+    // Event Propagation
+    // 1. Bubbling Event Propagation (bottom to top) -> images > li > ul  (inner element to outer element/ inside to outside)
+    // 2. Capturing Event Propagation (top to bottom)-> ul > li > images  (outer element to inner element/ outside to inside)
+
+    // document.getElementById('images').addEventListener('click', function(e) {
+    //     console.log("clicked inside the ul");
+    // }, false );
+
+    // document.getElementById('owl').addEventListener('click', function(e) {
+    //     console.log("owl clicked");
+    // }, false );
+
+
+    // document.getElementById('images').addEventListener('click', function(e) {
+    //     console.log("clicked inside the ul");
+    // } );
+
+    // document.getElementById('owl').addEventListener('click', function(e) {
+    //     console.log("owl clicked");
+    // } );
+
+
+    // Capturing Mode  (top to bottom)
+
+    // document.getElementById('images').addEventListener('click', function(e) {
+    //     console.log("clicked inside the url");
+    // }, true );
+
+    // document.getElementById('owl').addEventListener('click', function(e) {
+    //     console.log("owl clicked");
+    // }, true );
+
+
+
+
+    // document.getElementById('images').addEventListener('click', function(e) {
+    //     console.log("clicked inside the ul");
+    // }, false )
+
+    // document.getElementById('owl').addEventListener('click', function(e) {
+    //     console.log("owl clicked");
+    //     e.stopPropagation();  // it will help to stop the propagation from going up/top
+    // }, false )
+
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     console.log("google clicked");
+    // }, false)
+
+
+    // document.querySelector('#images').addEventListener('click', function(e) {
+    //     console.log(e);
+    // }, false)
+
+    // target
+    // document.querySelector('#images').addEventListener('click', function(e) {
+    //     console.log(e.target);
+    // }, false)
+
+    document.querySelector('#images').addEventListener('click', function(e) {
+        // console.log(e.target.parentNode);
+        console.log(e.target.tagName);
+
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode  // to get <li></li> of that image
+            removeIt.remove();
+        }
+
+        // removeIt.parentNode.removeChild(removeIt);  // it gives ul then it will remove li
+    }, false)
+
+</script>
+</html>

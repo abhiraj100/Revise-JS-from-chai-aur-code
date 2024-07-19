@@ -1,0 +1,73 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Javascript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+
+<script>
+
+    // setInterval(function (){
+    //     // console.log("Abhiraj Yadav")
+    //     console.log("Abhiraj Yadav", Date.now());
+    // }, 1000);
+
+    const sayDate = function(str) {
+        console.log(str, Date.now());
+    }
+
+    // setInterval(sayDate, 1000, "Hi");
+    const intervalId = setInterval(sayDate, 1000, "Hi");
+
+    clearInterval(intervalId);
+
+
+ 
+</script> 
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Javascript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+        let intervalId = null;
+
+        const sayDate = function() {
+            console.log("Abhiraj Yadav", Date.now());
+        }
+
+        document.querySelector('#start').addEventListener('click', function () {
+            // Check if intervalId is null to prevent multiple interval starts
+            if (intervalId === null) {
+                intervalId = setInterval(sayDate, 1000);
+                console.log("STARTED");
+            }
+        });
+
+        document.querySelector('#stop').addEventListener('click', function () {
+            // Check if intervalId is not null to prevent stopping a non-existent interval
+            if (intervalId !== null) {
+                clearInterval(intervalId);
+                intervalId = null; // Reset intervalId to null after clearing
+                console.log("STOPPED");
+            }
+        });
+    </script>
+</body>
+</html>
