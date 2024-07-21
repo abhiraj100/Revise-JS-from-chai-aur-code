@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexical aur chai</title>
+</head>
+<body style="background-color: #313131;">
+    
+</body>
+
+    <script>
+        // Lexical Scoping  -> The term “lexical scope” may seem tricky to grasp at first glance.   But it's helpful to understand what each word means.So this article will explain lexical scope by first examining the meaning of “lexical” and “scope”.
+
+        // function init() {
+        //     let name = "Mozilla"; 
+        //     function displayName() {
+        //         console.log(name); 
+        //     }
+        //     displayName();
+        // }
+        // init();
+
+        function outer(){
+            let username = "abhiraj";
+            // console.log("OUTER", secret);  // secret is not defined at outer
+
+            function inner(){
+                let secret = "my123"
+                console.log("inner", username);
+            }
+
+            function innerTwo(){
+                console.log("innerTwo", username);
+                console.log("innerTwo", secret);
+            }
+            inner();
+            innerTwo();
+        }
+        outer();
+        console.log("TOO OUTER", username);
+
+
+        // function makeFunc() {
+        // const name = "Mozilla";
+        // function displayName() {
+        //     console.log(name);
+        // }
+        // return displayName;
+        // }
+
+        // const myFunc = makeFunc();
+        // myFunc();
+
+    </script>
+</html>
